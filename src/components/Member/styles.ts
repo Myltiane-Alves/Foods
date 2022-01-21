@@ -50,7 +50,7 @@ export const Container = styled.header`
   @media (min-width: 1280px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-size: 50%;  
+    background-size: 37%;  
     .col {
       padding-top: 10rem;
       h1 {
