@@ -60,7 +60,8 @@ export const Card = styled.div`
   @media (min-width: 1280px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center
+    justify-items: center;
+    padding-bottom: 3rem;
   }
   @media (min-width: 768px) and (max-width: 1024px){
     display: grid;
