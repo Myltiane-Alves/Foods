@@ -77,7 +77,7 @@ export const Content = styled.div`
   width: 300px;
   height: 28.125rem;
   background-color: #FFFFFF;
-  margin-left: 2rem;
+  margin-left: 1.8rem;
   h2 {
     font-size: 1.3rem;
     font-weight: bold;

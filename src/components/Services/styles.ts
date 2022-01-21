@@ -58,7 +58,7 @@ export const Description = styled.div`
   flex-direction: column;
   display: flex;
   padding: 1rem;
-  margin-top: 25rem;
+  margin-top: 27rem;
   background-color: transparent;
   @media (min-width: 1280px) {
     margin: 5rem 8.75rem 2.5rem 0;   

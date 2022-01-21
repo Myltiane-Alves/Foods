@@ -126,6 +126,7 @@ export const ContentCard = styled.div`
 export const Title = styled.div`
   flex-direction: column;
   margin-bottom: 3rem;
+  padding-top: 2rem;
   h1 {
     font-size: 2rem;
     font-weight: bold;
