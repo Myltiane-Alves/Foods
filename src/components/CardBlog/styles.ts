@@ -41,7 +41,6 @@ export const Description = styled.div`
 export const Img = styled.div` 
   img {
    width: 300px;
-   height: 16.688rem;
    border-radius: 0.438rem;
   } 
   @media (min-width: 768px) and (max-width: 1024px){

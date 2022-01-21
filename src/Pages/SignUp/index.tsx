@@ -7,7 +7,6 @@ import Button from '../../components/Button';
 //import Input from '../../components/Input';
 import  api  from "../../Services/api";
 import InputMask from '../../components/Input/InputMask';
-import * as Yup from 'yup';
 
 
 export default function SignUp()  {
@@ -40,15 +39,15 @@ export default function SignUp()  {
     localStorage.setItem("State", State);
 
   
-    document.cookie = "Nome" + "=" + Name + "; " ;
-    document.cookie = "Email" + "=" + Email + ";" ;
-    document.cookie = "Senha" + "=" + Password + ";" ;
-    document.cookie = "Data de Nascimento" + "=" + Birthdate + "; " ;
-    document.cookie = "CPF" + "=" + CPF + "; " ;
-    document.cookie = "CEP" + "=" + Zip + "; " ;
-    document.cookie = "Address" + "=" + Address + "; " ;
-    document.cookie = "City" + "=" + City + "; " ;
-    document.cookie = "State" + "=" + State + "; "  ;
+    document.cookie = "Nome" + "=" + Name + "; " + expires;
+    document.cookie = "Email" + "=" + Email + ";" + expires; 
+    document.cookie = "Senha" + "=" + Password + ";" + expires;
+    document.cookie = "Data de Nascimento" + "=" + Birthdate + "; " + expires; 
+    document.cookie = "CPF" + "=" + CPF + "; " + expires;
+    document.cookie = "CEP" + "=" + Zip + "; " + expires;
+    document.cookie = "Address" + "=" + Address + "; " + expires;
+    document.cookie = "City" + "=" + City + "; " + expires;
+    document.cookie = "State" + "=" + State + "; "  + expires;
   };
 
   const cepValidation = useCallback(async () => {
@@ -97,6 +96,7 @@ export default function SignUp()  {
           <h2>Faça seu Cadastro</h2>
           <PersonalData>
             <Input         
+              onKeyUp={clearError}
               name="name"
               type="text"
               placeholder="Name"
@@ -104,13 +104,15 @@ export default function SignUp()  {
               onChange={(e) => setName(e.target.value)}
             />
             <Input         
+              onKeyUp={clearError}
               name="email"
               type="text"
               placeholder="Email"
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Input         
+            <Input
+              onKeyUp={clearError}         
               name="password"
               type="password"
               placeholder="Senha"
@@ -118,7 +120,8 @@ export default function SignUp()  {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <InputMask             
+            <InputMask      
+              onKeyUp={clearError}       
               mask="999.999.999-99"
               name="cpf"
               placeholder="CPF"
@@ -126,7 +129,8 @@ export default function SignUp()  {
               onChange={(e) => setCPF(e.target.value)}
             />
 
-            <InputMask        
+            <InputMask     
+              onKeyUp={clearError}   
               mask="99/99/9999"
               name="birthdate"
               placeholder="Data de Nascimento"
@@ -135,7 +139,7 @@ export default function SignUp()  {
             />
             
             <InputMask         
-             
+              onKeyUp={clearError}
               mask="99999-999"
               name="cep"
               placeholder="Cep"
@@ -143,7 +147,8 @@ export default function SignUp()  {
               onChange={(e) => setZip(e.target.value)}
             />
         
-            <Input         
+            <Input      
+              onKeyUp={clearError}   
               name="address"
               type="string"
               placeholder="Endereço"
@@ -151,7 +156,8 @@ export default function SignUp()  {
               onChange={(e) => setAddress(e.target.value)}
               defaultValue={Address}
             />
-            <Input         
+            <Input      
+              onKeyUp={clearError}   
               name="city"
               type="string"
               placeholder="Cidade"

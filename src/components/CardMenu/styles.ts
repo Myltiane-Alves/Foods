@@ -69,6 +69,7 @@ export const Description = styled.div`
   width: 300px;
   height: 200px;
   border-radius: 7px;
+  background-color: #FFFFFF;
   span {
     font-size: 1.3rem;
     font-weight: bold;
