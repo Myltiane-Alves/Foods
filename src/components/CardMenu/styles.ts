@@ -65,7 +65,7 @@ export const Img = styled.div`
 export const Description = styled.div`
   flex-direction: column;
   display: flex;
-  padding-top: 5rem;
+  padding-top: 3rem;
   width: 300px;
   height: 200px;
   border-radius: 7px;
@@ -95,12 +95,11 @@ export const Description = styled.div`
 `;
 export const ContentCard = styled.div`
   flex-direction: column;
- 
   box-shadow:  0 15px 20px rgba(29, 22, 77, 0.18 ); 
   border-radius: 7px;
   height: 475px;
   width: 300px;
-  margin-bottom: 7rem;
+  margin-bottom: 3rem;
   margin-left: 2rem;
   @media (min-width: 414px) and (max-width: 896px) {
     flex-direction: column;
