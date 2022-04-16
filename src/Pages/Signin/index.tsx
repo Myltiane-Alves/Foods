@@ -4,30 +4,33 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Link, } from 'react-router-dom';
 import { Background, Container, Content } from './styles';
+import { database } from '../../firebase/firebase';
+import { sign } from 'crypto';
 
+interface SignFormData {
+  email: string;
+  password: string;
+}
 
 export default function SigIn() {
+  const { signIn } = useAuth();
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const formRef = useRef<FormHandles>(null);
 
-  var d = new Date();
-  var expires = "expires=" + d.toUTCString();
-
-  const LocalStorage = async () => {
-    localStorage.setItem("Senha", password);
-    localStorage.setItem("Email", email);
-
-    document.cookie = "Email" + "=" + email + ";" + expires;
-    document.cookie = "Senha" + "=" + password + ";" + expires;
-  }
-
   const handleSubmit = () => {
+    async(data: SignFormData): Promise<void> => {
+      try {
 
-    setEmail('');
-    setPassword('');   
-  }
+        await signIn({ email: data.email, password: data.password})
+      } catch (err) {
 
+      }
+    }
+    [signIn, history]
+  };
+
+ 
   return (
     <Container>
       <Background />

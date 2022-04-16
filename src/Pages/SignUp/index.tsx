@@ -10,45 +10,25 @@ import InputMask from '../../components/Input/InputMask';
 
 
 export default function SignUp()  {
-  const [Name, setName] = useState("");
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState('');
-  const [Birthdate, setBirthdate] = useState("");
-  const [CPF, setCPF] = useState("");
-  const [Zip, setZip] = useState("");
-  const [Address, setAddress] = useState("");
-  const [City, setCity] = useState("");
-  const [State, setState] = useState("");
+  const [name, setName] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState('');
+  const [birthdate, setBirthdate] = useState("");
+  const [cpf, setCpf] = useState({});
+  const [zip, setZip] = useState("");
+  const [address, setAddress] = useState({});
+  const [city, setCity] = useState({});
+  const [state, setState] = useState({});
 
   const [completeAddress, setCompleteAddress] = useState([]);
   const formRef = useRef<FormHandles>(null);
 
-  var d = new Date();
-  d.setTime(d.getTime() + 5 * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toUTCString();
+  useEffect(() => {
+    async function loadData() {
 
-  const LocalStorage = async () => {
-    localStorage.setItem("Nome", Name);
-    localStorage.setItem("Senha", Password);
-    localStorage.setItem("Email", Email);
-    localStorage.setItem("Data de Nascimento", Birthdate);
-    localStorage.setItem("CPF", CPF);
-    localStorage.setItem("CEP", Zip);
-    localStorage.setItem("Address", Address);
-    localStorage.setItem("City", City);
-    localStorage.setItem("State", State);
-
-  
-    document.cookie = "Nome" + "=" + Name + "; " + expires;
-    document.cookie = "Email" + "=" + Email + ";" + expires; 
-    document.cookie = "Senha" + "=" + Password + ";" + expires;
-    document.cookie = "Data de Nascimento" + "=" + Birthdate + "; " + expires; 
-    document.cookie = "CPF" + "=" + CPF + "; " + expires;
-    document.cookie = "CEP" + "=" + Zip + "; " + expires;
-    document.cookie = "Address" + "=" + Address + "; " + expires;
-    document.cookie = "City" + "=" + City + "; " + expires;
-    document.cookie = "State" + "=" + State + "; "  + expires;
-  };
+    }
+    loadData();
+  }, []);
 
   const cepValidation = useCallback(async () => {
     const cep = formRef.current
@@ -78,9 +58,20 @@ export default function SignUp()  {
   }, []);
   
   const handleSubmit = () => {
-    console.log(City)
-    console.log(Address)
-    console.log(State)
+      const data = {
+        name,
+        email,
+        password,
+        birthdate,
+        cpf,
+        zip,
+        address,
+        city,
+        state,
+      };
+      console.log(data);
+    
+
   }
 
 
@@ -99,8 +90,7 @@ export default function SignUp()  {
               onKeyUp={clearError}
               name="name"
               type="text"
-              placeholder="Name"
-              value={Name}
+              placeholder="Name"             
               onChange={(e) => setName(e.target.value)}
             />
             <Input         
@@ -108,7 +98,7 @@ export default function SignUp()  {
               name="email"
               type="text"
               placeholder="Email"
-              value={Email}
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
@@ -116,7 +106,7 @@ export default function SignUp()  {
               name="password"
               type="password"
               placeholder="Senha"
-              value={Password}
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
@@ -124,17 +114,15 @@ export default function SignUp()  {
               onKeyUp={clearError}       
               mask="999.999.999-99"
               name="cpf"
-              placeholder="CPF"
-              value={CPF}
-              onChange={(e) => setCPF(e.target.value)}
+              placeholder="CPF"         
+              onChange={(e) => setCpf(e.target.value)}
             />
 
             <InputMask     
               onKeyUp={clearError}   
               mask="99/99/9999"
               name="birthdate"
-              placeholder="Data de Nascimento"
-              value={Birthdate}
+              placeholder="Data de Nascimento"         
               onChange={(e) => setBirthdate(e.target.value)}
             />
             
@@ -143,41 +131,32 @@ export default function SignUp()  {
               mask="99999-999"
               name="cep"
               placeholder="Cep"
-              value={Zip}    
+              value={zip}    
               onChange={(e) => setZip(e.target.value)}
             />
         
             <Input      
               onKeyUp={clearError}   
-              name="address"
-              type="string"
-              placeholder="Endereço"
-              value={Address}
+              name="address"  
+              placeholder="Endereço"    
               onChange={(e) => setAddress(e.target.value)}
-              defaultValue={Address}
             />
             <Input      
               onKeyUp={clearError}   
-              name="city"
-              type="string"
-              placeholder="Cidade"
-              value={City}
-              onChange={(e) => setCity(e.target.value)}
-              defaultValue={City}
+              name="city"       
+              placeholder="Cidade"   
+              onChange={(e) => setCity(e.target.value)}       
             />
             <Input          
-              name="state"
-              type="string"
-              placeholder="Estado"
-              value={State}
+              name="state"       
+              placeholder="Estado"      
               onChange={(e) => setState(e.target.value)}
-              defaultValue={State}
             />
         
           </PersonalData>
             <Button
             type="submit"
-            onClick={LocalStorage}
+            onClick={() => handleSubmit()}
             >
               Register 
             </Button>  
